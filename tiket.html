@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Tiket Bioskop</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: goldenrod;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            
+        }
+
+        #container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #ticketDetails {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #totalPrice {
+            color: #333;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    
+<div id="container">
+    <h2>Menu Tiket Bioskop</h2>
+    <a href="index.html">Home</a>
+
+    <form id="ticketForm">
+        <label for="movieName">Nama Film:</label>
+        <input type="text" id="movieName" name="movieName" placeholder="Masukkan nama film" required>
+        
+
+        <label for="regularTicket">Regular Tiket (Rp 50,000):</label>
+        <input type="number" id="regularTicket" name="regularTicket"  placeholder="jumlah orang" min="" value="">
+
+        <label for="vipTicket">VIP Tiket (Rp 100,000):</label>
+        <input type="number" id="vipTicket" name="vipTicket" placeholder="jumlah orang" min="" value="">
+
+        <label for="childTicket">Child Tiket (Rp 30,000):</label>
+        <input type="number" id="childTicket" name="childTicket" placeholder="jumlah orang" min="" value="">
+
+        <button type="button" onclick="submitForm()">Hitung Total</button>
+    </form>
+
+    <div id="ticketDetails"></div>
+    <p id="totalPrice">Total Harga: Rp 0</p>
+</div>
+
+
+   
+      
+     
+  
+
+<script>
+    function submitForm() {
+        var movieName = document.getElementById("movieName").value;
+        var regularQty = parseInt(document.getElementById("regularTicket").value) || 0;
+        var vipQty = parseInt(document.getElementById("vipTicket").value) || 0;
+        var childQty = parseInt(document.getElementById("childTicket").value) || 0;
+
+        var ticketDetails = "<strong>Informasi Tiket:</strong><br>" +
+            "<strong>Nama Film:</strong> " + movieName + "<br>" +
+            "<strong>Regular Tiket:</strong> " + regularQty + "<br>" +
+            "<strong>VIP Tiket:</strong> " + vipQty + "<br>" +
+            "<strong>Child Tiket:</strong> " + childQty;
+
+        var totalPrice = (regularQty * 50000) + (vipQty * 100000) + (childQty * 30000);
+
+        document.getElementById("ticketDetails").innerHTML = ticketDetails;
+        document.getElementById("totalPrice").innerText = "Total Harga: Rp " + totalPrice;
+    }
+</script>
+</body>
+</html>
